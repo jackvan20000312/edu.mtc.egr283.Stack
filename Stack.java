@@ -3,10 +3,13 @@ package edu.mtc.egr283.Stack;
 import edu.mtc.egr283.dll.DLL;
 
 /**
+ * Simple Stack program
  * @author Jacob Vaught
- *
+ * @professor William Sims
+ * @DueDate 03/31/2021
  * @param <T>
  */
+
 public class Stack<T> {
 
 	public DLL<T> top;
@@ -15,14 +18,14 @@ public class Stack<T> {
 	 * Default Constructor
 	 */
 	public Stack() {
-		DLL<T> top = new DLL<T>();
+		this.top = new DLL<T>();
 	}//ending bracket of method
 	
 	/**
 	 * @return boolean <code>isEmpty</code>
 	 */
 	public boolean isEmpty() {
-		return top.isEmpty();
+		return this.top.isEmpty();
 	}//ending bracket of method
 	
 	/**
@@ -40,12 +43,12 @@ public class Stack<T> {
 	 * @return T <code>returnData</code>
 	 * @throws <code>StackPopException</code>
 	 */
-	public T pop() throws StackPopException {
+	public T pop()  {
 		if(this.isEmpty()) {
-			throw new StackPopException("Tried to pop an empty stack.");
+			return null;
 		} else {
 			T returnData = top.getDataAtPosition(0);
-			top.remove(0);
+			this.top.remove(0);
 			return returnData;
 		}//ending bracket of if
 	}//ending bracket of method
@@ -54,12 +57,16 @@ public class Stack<T> {
 	// add to the underlying linked list. Runaway programs
 	// will crash ungracefully.
 	
-	
 	/**
 	 * @param T <code>newStackData</code>
 	 */
 	public void push(T newStackData){
-		top.addAtHead(newStackData);
+		this.top.addAtHead(newStackData);
 	}//ending bracket of method
+	
+	public String toString() {
+		return top.toString();
+	}//ending bracket of toString Method
+
 
 }//ending bracket of class
